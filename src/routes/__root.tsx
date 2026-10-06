@@ -1,7 +1,9 @@
+import { TanStackDevtools } from "@tanstack/react-devtools"
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router"
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
-import { TanStackDevtools } from "@tanstack/react-devtools"
 
+import { ModeToggle } from "@/components/mode-toggle"
+import { ThemeProvider } from "@/components/theme-provider"
 import appCss from "../styles.css?url"
 
 export const Route = createRootRoute({
@@ -41,7 +43,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <ThemeProvider defaultTheme="system" storageKey="theme">
+          <div className="relative mx-auto mt-20 max-w-2xl p-10">
+            <div className="absolute -top-15 right-10">
+              <ModeToggle />
+            </div>
+            {children}
+            <div className="mt-10 border-t pt-3 text-center text-sm text-muted-foreground">
+              <a href="https://x.com/SBALKHAIR" target="_blank">
+                @sbalkhair
+              </a>
+            </div>
+          </div>
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",

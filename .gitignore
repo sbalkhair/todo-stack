@@ -12,5 +12,10 @@ dist-ssr
 __unconfig*
 todos.json
 
+# prisma
+src/generated
+prisma/*.db
+prisma/*.db-journal
+
 # typescript
 *.tsbuildinfo
